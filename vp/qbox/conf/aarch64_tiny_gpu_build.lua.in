@@ -1,0 +1,6 @@
+TINYGPU_BUILD_DEFAULTS = {
+    QBOX_VP_ROOT = [====[@QBOX_VP_ROOT@]====],
+    QBOX_LIBRARY = [====[@QBOX_LIBRARY@]====],
+    TINYGPU_REPO_ROOT = [====[@TINYGPU_REPO_ROOT@]====]
+}
+dofile([====[@CMAKE_CURRENT_SOURCE_DIR@/conf/aarch64_tiny_gpu.lua]====])

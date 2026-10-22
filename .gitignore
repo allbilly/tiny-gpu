@@ -1,5 +1,15 @@
 */**/__pycache__
 build/
+vp/build/
+vp/qbox/build/
+vp/qbox/guest/*.aarch64
+vp/qbox/guest/*.ko
+vp/qbox/guest/*.o
+vp/qbox/guest/*.mod.c
+vp/qbox/guest/.*.cmd
+vp/qbox/guest/.tmp_versions/
+vp/qbox/guest/Module.symvers
+vp/qbox/guest/modules.order
 test/logs/*
 !.gitkeep
 gds/**/*.gltf
