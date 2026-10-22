@@ -15,7 +15,8 @@ module gpu #(
     parameter PROGRAM_MEM_DATA_BITS = 16,    // Number of bits in program memory value (16 bit instruction)
     parameter PROGRAM_MEM_NUM_CHANNELS = 1,  // Number of concurrent channels for sending requests to program memory
     parameter NUM_CORES = 2,                 // Number of cores to include in this GPU
-    parameter THREADS_PER_BLOCK = 4          // Number of threads to handle per block (determines the compute resources of each core)
+    parameter THREADS_PER_BLOCK = 4,         // Number of threads to handle per block (determines the compute resources of each core)
+    parameter PIPELINED_DIV = 0             // Split DIV across WAIT/EXECUTE for FPGA timing
 ) (
     input wire clk,
     input wire reset,
@@ -190,6 +191,7 @@ module gpu #(
                 .PROGRAM_MEM_ADDR_BITS(PROGRAM_MEM_ADDR_BITS),
                 .PROGRAM_MEM_DATA_BITS(PROGRAM_MEM_DATA_BITS),
                 .THREADS_PER_BLOCK(THREADS_PER_BLOCK),
+                .PIPELINED_DIV(PIPELINED_DIV),
             ) core_instance (
                 .clk(clk),
                 .reset(core_reset[i]),

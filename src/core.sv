@@ -10,7 +10,8 @@ module core #(
     parameter DATA_MEM_DATA_BITS = 8,
     parameter PROGRAM_MEM_ADDR_BITS = 8,
     parameter PROGRAM_MEM_DATA_BITS = 16,
-    parameter THREADS_PER_BLOCK = 4
+    parameter THREADS_PER_BLOCK = 4,
+    parameter PIPELINED_DIV = 0
 ) (
     input wire clk,
     input wire reset,
@@ -133,7 +134,7 @@ module core #(
     generate
         for (i = 0; i < THREADS_PER_BLOCK; i = i + 1) begin : threads
             // ALU
-            alu alu_instance (
+            alu #(.PIPELINED_DIV(PIPELINED_DIV)) alu_instance (
                 .clk(clk),
                 .reset(reset),
                 .enable(i < thread_count),

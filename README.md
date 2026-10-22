@@ -4,6 +4,10 @@ A minimal GPU implementation in Verilog optimized for learning about how GPUs wo
 
 Built with <15 files of fully documented Verilog, complete documentation on architecture & ISA, working matrix addition/multiplication kernels, and full support for kernel simulation & execution traces.
 
+For the local YPCB-00338-1P1 FPGA port, see [FPGA preparation](fpga/README.md).
+It provides a real-RTL on-board matrix self-test, BRAM/host wrapper, bounded
+simulation and synthesis checks, board constraints, and cable/build instructions.
+
 ### Table of Contents
 
 - [Overview](#overview)

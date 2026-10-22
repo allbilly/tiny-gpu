@@ -1,6 +1,23 @@
 .PHONY: test compile
+.DEFAULT_GOAL := compile
 
-export LIBPYTHON_LOC=$(shell cocotb-config --libpython)
+.PHONY: ypcb-generated ypcb-generated-check ypcb-test ypcb-synth ypcb-vivado
+ypcb-generated:
+	python3 fpga/tools/gen_workloads.py
+
+ypcb-generated-check:
+	python3 fpga/tools/gen_workloads.py --check
+
+ypcb-test: ypcb-generated-check
+	python3 fpga/tools/prepare.py
+
+ypcb-synth: ypcb-generated-check
+	python3 fpga/tools/prepare.py --synth
+
+ypcb-vivado: ypcb-generated-check
+	vivado -mode batch -source fpga/build.tcl
+
+export LIBPYTHON_LOC=$(shell command -v cocotb-config >/dev/null 2>&1 && cocotb-config --libpython)
 
 test_%:
 	make compile

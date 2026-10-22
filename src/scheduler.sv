@@ -100,8 +100,10 @@ module scheduler #(
                         done <= 1;
                         core_state <= DONE;
                     end else begin 
-                        // TODO: Branch divergence. For now assume all next_pc converge
-                        current_pc <= next_pc[THREADS_PER_BLOCK-1];
+                        // TODO: Branch divergence. Assume active next_pc converge.
+                        // Thread 0 is active in every nonempty block; the last
+                        // lane may be disabled in a partial block and hold PC=0.
+                        current_pc <= next_pc[0];
 
                         // Update is synchronous so we move on after one cycle
                         core_state <= FETCH;
