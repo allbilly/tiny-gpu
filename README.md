@@ -8,6 +8,13 @@ For the local YPCB-00338-1P1 FPGA port, see [FPGA preparation](fpga/README.md).
 It provides a real-RTL on-board matrix self-test, BRAM/host wrapper, bounded
 simulation and synthesis checks, board constraints, and cable/build instructions.
 
+**FPGA hardware test passed on 2026-10-25:** the real TinyGPU RTL executed its
+built-in matrix-add and matrix-multiply kernels on the YPCB XC7K480T after two
+DLC10 JTAG SRAM loads. JTAG SAMPLE captured **527/527 PASS samples, zero
+failures, and 44 heartbeat transitions**. Flash was not written.
+See the [physical FPGA test report](fpga/HARDWARE_TEST_20261025.md) for the two
+runs, image hash, verification method, and scope.
+
 ### Table of Contents
 
 - [Overview](#overview)
